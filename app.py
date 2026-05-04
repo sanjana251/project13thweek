@@ -98,7 +98,7 @@ st.markdown("""
 # ─── Sidebar ─────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## ⚙️ Configuration")
-    groq_api_key = st.secrets["GROQ_API_KEY"]
+    groq_api_key = "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"  # ✅ FIXED
     model_choice = st.selectbox(
         "🤖 LLM Model",
         ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "gemma2-9b-it"],
@@ -171,7 +171,6 @@ Sample rows:
         temperature=0.1,
     )
     raw = response.choices[0].message.content.strip()
-    # Strip markdown code fences if present
     raw = re.sub(r"```json|```", "", raw).strip()
     try:
         return json.loads(raw)
@@ -244,9 +243,7 @@ if uploaded_file:
     st.markdown("---")
     st.markdown("### 💬 Ask a Question")
 
-    # Suggested questions
     st.markdown("**Quick examples:**")
-    example_cols = df.columns.tolist()
     num_example_col = df.select_dtypes(include='number').columns.tolist()
     examples = [
         "Show me the top 5 rows",

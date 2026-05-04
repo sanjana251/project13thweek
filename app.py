@@ -98,7 +98,7 @@ st.markdown("""
 # ─── Sidebar ─────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("## ⚙️ Configuration")
-    groq_api_key = "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"  # ✅ FIXED
+    groq_api_key = st.secrets["GROQ_API_KEY"] # ✅ FIXED
     model_choice = st.selectbox(
         "🤖 LLM Model",
         ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "gemma2-9b-it"],
